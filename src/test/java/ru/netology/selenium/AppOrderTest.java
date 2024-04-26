@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,6 +26,7 @@ public class AppOrderTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -34,10 +36,13 @@ public class AppOrderTest {
     }
 
     @Test
-    void firstTestOpen() throws InterruptedException {
+    void checkingTheForm() {
 
-        driver.get("http://localhost:9999");
-        Thread.sleep(5000);
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Фёдор Михайлович Достоевский");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector("button.button")).click();
+
 
     }
 
