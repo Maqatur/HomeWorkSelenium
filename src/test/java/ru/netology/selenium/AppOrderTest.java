@@ -41,17 +41,11 @@ public class AppOrderTest {
     }
 
     @Test
-    void checkingTheFormToBeFilledIn() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Фёдор Михайлович Достоевский");
+    void checkingTheDebitCardApplicationForm() {
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Достоевский Федор Михайлович");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button.button")).click();
-
-    }
-
-    @Test
-    void checkingTheSubmissionConfirmationForm() {
-
         var actualTextElement = driver.findElement(By.cssSelector("[data-test-id=order-success]"));
         var actualText = actualTextElement.getText().trim();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", actualText);
