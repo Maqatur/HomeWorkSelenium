@@ -42,7 +42,7 @@ public class AppOrderTest {
 
     @Test
     void checkingTheDebitCardApplicationForm() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Достоевский Федор Михайлович");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Достоевский Федор");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79998887766");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button.button")).click();
